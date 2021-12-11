@@ -1,7 +1,7 @@
 {
-  "name": "starter-javascript-vite",
-  "version": "0.0.0",
-  "repository": "https://github.com/redgoose-dev/starter.git",
+  "name": "@redgoose/components",
+  "version": "0.0.1",
+  "repository": "https://github.com/redgoose-dev/components.git",
   "author": "redgoose <scripter@me.com>",
   "license": "MIT",
   "scripts": {
