@@ -1,0 +1,25 @@
+{
+  "components": [
+    {
+      "key": "media",
+      "path": "media",
+      "category": "media",
+      "title": "미디어",
+      "description": "이미지와 비디오 츌력하는 기능을 가졌습니다."
+    },
+    {
+      "key": "redLine",
+      "path": "red-line",
+      "category": "design",
+      "title": "붉은 외곽선",
+      "description": "그냥 작은거??"
+    },
+    {
+      "key": "redLine222",
+      "path": "red-line222",
+      "category": "design",
+      "title": "붉은 외곽선2222222",
+      "description": "그냥 작은거??2222"
+    }
+  ]
+}

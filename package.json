@@ -15,7 +15,13 @@
     "last 2 versions"
   ],
   "devDependencies": {
+    "@vitejs/plugin-vue": "^2.0.0",
     "sass": "^1.43.2",
     "vite": "^2.6.4"
+  },
+  "dependencies": {
+    "vue": "^3.2.26",
+    "vue-router": "^4.0.12",
+    "vuex": "^4.0.2"
   }
 }

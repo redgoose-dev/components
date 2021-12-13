@@ -3,8 +3,8 @@
 :root {
   // color
   --color-bg: #fafbfc;
-  --color-text-base: #222;
-  --color-text-key: #b31f37;
+  --color-fill: #111;
+  --color-main: #b31f37;
   // size
   --size-text-base: 16px;
   // font
@@ -28,8 +28,8 @@ body, button, input, textarea, select {
   font-family: var(--font-base);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: none;
-  color: var(--color-text-base);
+  color: var(--color-fill);
 }
 a {
-  color: var(--color-text-key);
+  color: var(--color-main);
 }
