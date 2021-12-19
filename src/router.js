@@ -7,13 +7,19 @@ const routes = [
     component: () => import('./screen/index.vue'),
   },
   {
-    path: '/view',
+    path: '/view/:project',
     name: 'View',
     component: () => import('./screen/view.vue'),
   },
 ];
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes,
-})
+});
+
+// router.afterEach((to, from) => {
+//   console.log(to, from);
+// });
+
+export default router;

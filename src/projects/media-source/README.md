@@ -1,13 +1,11 @@
-# media
-
-컴포넌트 하나에서 이미지나 비디오를 출력한다.
+컴포넌트 하나에서 이미지나 비디오를 출력합니다.
 
 
 ## Using
 
 ```html
 <script type="module">
-import Media from './index.js';
+import Media from '/src/projects/media-source';
 customElements.define('comp-media', Media);
 </script>
 ```
@@ -15,24 +13,24 @@ customElements.define('comp-media', Media);
 
 ## Attributes
 
-### src
+#### src
 
 - value: `jpg,png,gif,svg,mp4`
 
 이미지나 비디오 주소
 
-### alt
+#### alt
 
-컴포넌트의 대체설명으로 사용하거나 제목으로 사용한다.
+컴포넌트의 대체설명으로 사용하거나 제목으로 사용합니다.
 
-### width
+#### width
 
 컴포넌트의 가로 사이즈
 
-### height
+#### height
 
 컴포넌트의 높이 사이즈
 
-### poster
+#### poster
 
 비디오가 나오기전에 잠깐 나오는 데체 이미지

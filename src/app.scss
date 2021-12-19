@@ -1,0 +1,110 @@
+@import './assets/scss/mixins';
+
+.layout-header {
+  position: sticky;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 48px;
+  padding: 0 var(--size-side-padding);
+  background: rgb(var(--color-main));
+  background: linear-gradient(135deg, rgb(99 70 206 / 90%) 0%, rgb(56 193 159 / 90%) 100%);
+  @include background-blur(8px);
+  &__wrap {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    max-width: var(--size-container);
+    margin: 0 auto;
+    height: 100%;
+  }
+  &__body {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 100%;
+  }
+  &__title {
+    height: 100%;
+    margin: 0;
+    user-select: none;
+    a {
+      display: flex;
+      align-items: center;
+      margin-left: -12px;
+      padding: 0 12px;
+      height: 100%;
+      font-size: 20px;
+      line-height: 1.6;
+      letter-spacing: -.5px;
+      text-transform: uppercase;
+      font-weight: 800;
+      text-decoration: none;
+      color: rgb(var(--color-bg));
+      box-sizing: border-box;
+      @include button-touch-options(true);
+      text-shadow: 0 1px 4px rgb(0 0 0 / 20%);
+      &:focus-visible {
+        outline: 1px dashed rgb(var(--color-sub));
+        outline-offset: -1px;
+      }
+    }
+  }
+  &__navigation {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 100%;
+    a {
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 1.2;
+      height: 100%;
+      color: rgb(var(--color-bg));
+      box-sizing: border-box;
+      text-shadow: 0 1px 2px rgb(0 0 0 / 20%);
+      @include button-touch-options(true);
+      &:focus-visible {
+        outline: 1px dashed rgb(var(--color-sub));
+        outline-offset: -1px;
+      }
+      &.router-link-exact-active {
+        opacity: .5;
+        pointer-events: none;
+        &:focus-visible {
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+.container {
+  padding: 0 var(--size-side-padding);
+  &__wrap {
+    max-width: var(--size-container);
+    margin: 50px auto 70px;
+  }
+}
+
+.layout-footer {
+  background: #f1f1f1;
+  padding: 24px var(--size-side-padding);
+  &__wrap {
+    max-width: var(--size-container);
+    margin: 0 auto;
+  }
+  &__copyright {
+    margin: 0;
+    text-align: center;
+    font-family: var(--font-eng);
+    font-size: 11px;
+    color: rgb(var(--color-fill-weak));
+    line-height: 1.6;
+    user-select: none;
+  }
+}

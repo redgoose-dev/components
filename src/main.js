@@ -3,6 +3,7 @@ import router from './router';
 import App from './app.vue';
 
 import './assets/scss/main.scss';
+import 'redgoose-content-body/dist/body.css';
 
 // import { groupBy } from './libs/array';
 // import preference from './preference.json';

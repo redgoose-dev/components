@@ -1,22 +1,9 @@
 /**
+ * media source
  * print image or video
  */
 
-const template = document.createElement('template');
-template.innerHTML = `
-<style>
-.comp-media {
-  display: var(--media-display, inline-block);
-  object-fit: var(--media-fit, unset);
-  width: var(--media-width, unset);
-  height: var(--media-height, unset);
-  max-width: var(--media-max-width, 100%);
-  max-height: var(--media-max-height, unset);
-}
-</style>
-`;
-
-class Media extends HTMLElement {
+class MediaSource extends HTMLElement {
 
   constructor()
   {
@@ -25,7 +12,7 @@ class Media extends HTMLElement {
     this.rendered = false;
     this.$root = this.attachShadow({ mode: 'open' });
     this.$body = undefined;
-    this.$root.appendChild(template.content.cloneNode(true));
+    this.$root.appendChild(this.template.content.cloneNode(true));
   }
 
   get props()
@@ -36,6 +23,24 @@ class Media extends HTMLElement {
       width: this.getAttribute('width'),
       height: this.getAttribute('height'),
     };
+  }
+
+  get template()
+  {
+    let template = document.createElement('template');
+    template.innerHTML = `
+<style>
+.comp-media {
+  display: var(--media-display, inline-block);
+  object-fit: var(--media-fit, unset);
+  width: var(--media-width, unset);
+  height: var(--media-height, unset);
+  max-width: var(--media-max-width, 100%);
+  max-height: var(--media-max-height, unset);
+}
+</style>
+`.trim();
+    return template;
   }
 
   static get observedAttributes()
@@ -132,6 +137,7 @@ class Media extends HTMLElement {
   updateAlt()
   {
     const { $body, props } = this;
+    if (!$body) return;
     let attr = $body.tagName.toLowerCase() === 'img' ? 'alt' : 'title';
     $body[attr] = props.alt || '';
   }
@@ -144,4 +150,4 @@ class Media extends HTMLElement {
 
 }
 
-export default Media;
+export default MediaSource;

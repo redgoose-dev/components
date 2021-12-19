@@ -18,6 +18,7 @@ export default defineConfig(({ mode }) => {
     },
     define: {
       'TITLE': JSON.stringify(env.VITE_TITLE),
+      'AUTHOR': JSON.stringify(env.VITE_AUTHOR),
     },
     plugins: [
       vue({
