@@ -1,12 +1,19 @@
+# media-source
+
 컴포넌트 하나에서 이미지나 비디오를 출력합니다.
 
 
 ## Using
 
+이미지를 사용하는 느낌으로 사용할 수 있습니다.  
+하지만 이 컴포넌트를 사용하는 이유는 같은 모습의 이미지와 비디오를 사용하는때가 알수없는 상태에서 유용합니다.
+
 ```html
+<media-source src="filename.jpg"/>
+
 <script type="module">
-import Media from '/src/projects/media-source';
-customElements.define('comp-media', Media);
+import MediaSource from '/src/projects/media-source';
+customElements.define('media-source', MediaSource);
 </script>
 ```
 
