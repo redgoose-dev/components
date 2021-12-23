@@ -14,8 +14,8 @@
     text-align: center;
     h1 {
       margin: 0;
-      line-height: 1.05;
-      font-size: 44px;
+      line-height: 1.15;
+      font-size: 42px;
       font-weight: 800;
       letter-spacing: -1px;
     }
@@ -76,7 +76,7 @@
       border-radius: 26px;
       transition: box-shadow 150ms ease-out;
       font-weight: 600;
-      box-shadow: 0 0 0 1px rgb(255 255 255 / 100%), 0 0 20px rgb(var(--color-sub) / 50%);
+      box-shadow: 0 0 0 1px rgb(255 255 255 / 100%), 0 0 15px rgb(var(--color-sub) / 40%);
       letter-spacing: -.25px;
       @include mixins.button-touch-options();
       &:active {

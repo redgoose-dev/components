@@ -37,6 +37,17 @@
 }
 
 
+// === Typography
+
+// single line text
+@mixin text-single-line()
+{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
 // === Button
 
 // button touch options

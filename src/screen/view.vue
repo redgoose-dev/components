@@ -26,7 +26,8 @@
 import { reactive, computed } from 'vue';
 import { useRoute, onBeforeRouteLeave } from 'vue-router';
 import { marked } from 'marked';
-import { tree, categories } from '../projects/tree';
+import tree from '../projects/tree';
+import categories from '../projects/categories';
 
 const route = useRoute();
 const state = reactive({
@@ -99,6 +100,7 @@ fetch()
     state.loading = false;
   })
   .catch(e => {
+    console.error(e);
     state.loading = false;
     state.content = {};
     error(e);
@@ -119,7 +121,7 @@ onBeforeRouteLeave((to, from) => {
     --color-text: rgb(var(--color-fill));
     --color-text-title: rgb(var(--color-fill));
     --color-text-key: rgb(var(--color-main));
-    --color-text-code: rgb(var(--color-sub));
+    --color-text-code: rgb(var(--color-main));
     //--color-content-bg: red;
     //--color-content-line: lime;
     --size-text-length: 1.45;

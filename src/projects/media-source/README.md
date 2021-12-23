@@ -22,22 +22,31 @@ customElements.define('media-source', MediaSource);
 
 #### src
 
-- value: `jpg,png,gif,svg,mp4`
+- value: `jpg|png|gif|svg|mp4`
+- type: `string`
 
 이미지나 비디오 주소
 
 #### alt
 
+- type: `string`
+
 컴포넌트의 대체설명으로 사용하거나 제목으로 사용합니다.
 
 #### width
+
+- type: `string|number`
 
 컴포넌트의 가로 사이즈
 
 #### height
 
+- type: `string|number`
+
 컴포넌트의 높이 사이즈
 
 #### poster
+
+- type: `string`
 
 비디오가 나오기전에 잠깐 나오는 데체 이미지

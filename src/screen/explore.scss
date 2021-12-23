@@ -1,0 +1,50 @@
+@use '../assets/scss/mixins';
+
+.explorer {
+  &__wrap {
+    display: grid;
+    grid-template-columns: 1fr 160px;
+    align-items: flex-start;
+    margin: 30px 0 0;
+  }
+  &__side {
+    position: sticky;
+    top: 98px;
+  }
+  &__body {
+    margin: 0 30px 0 0;
+  }
+  &__header {
+    h1 {
+      margin: 0;
+      line-height: 1.15;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+    p {
+      margin: 4px 0 0;
+      font-size: 12px;
+      color: var(--color-);
+      line-height: 1.25;
+    }
+  }
+  &__index {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(var(--index-column, 1), 1fr);
+    gap: 16px;
+    li {
+      min-width: 0;
+    }
+  }
+  &__paginate {
+    margin: 30px 0 0;
+  }
+
+  @include mixins.responsive(desktop) {
+    --index-column: 2;
+  }
+}

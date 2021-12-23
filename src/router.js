@@ -3,8 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 const routes = [
   {
     path: '/',
-    name: 'Index',
-    component: () => import('./screen/index.vue'),
+    name: 'Explore',
+    component: () => import('./screen/explore.vue'),
   },
   {
     path: '/view/:project',

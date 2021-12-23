@@ -1,8 +1,3 @@
-const categories = new Map([
-  [ 'typography', 'Typography' ],
-  [ 'media', 'Media' ],
-]);
-
 const items = [
   {
     key: 'mediaSource',
@@ -11,15 +6,10 @@ const items = [
   },
 ];
 
-const tree = items.reduce((map, obj) => {
+export default items.reduce((map, obj) => {
   map.set(obj.key, {
     category: obj.category,
     path: obj.path,
   });
   return map;
 }, new Map);
-
-export {
-  tree,
-  categories,
-};
