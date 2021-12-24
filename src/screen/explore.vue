@@ -11,7 +11,6 @@
           <Item/>
         </li>
       </ul>
-      {{state.page}}
       <Paginate
         v-model="state.page"
         :total="156"
