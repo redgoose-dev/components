@@ -1,32 +1,40 @@
 <template>
 <div class="explorer-item">
-  <router-link to="/view/mediaSource" class="explorer-item__wrap">
-    <h3 class="explorer-item__title">
-      media-source
-    </h3>
+  <router-link :to="`/view/${props.path}`" class="explorer-item__wrap">
+    <h3 class="explorer-item__title">{{props.name}}</h3>
     <p class="explorer-item__meta">
-      <span>Category: Media</span>
+      <span>Category: {{props.category}}</span>
     </p>
-    <p class="explorer-item__description">
-      description text
-    </p>
+    <p class="explorer-item__description">{{props.description}}</p>
   </router-link>
 </div>
 </template>
+
+<script setup>
+const props = defineProps({
+  name: String,
+  path: String,
+  category: String,
+  description: String,
+});
+</script>
 
 <style lang="scss" scoped>
 @use '../../assets/scss/mixins';
 .explorer-item {
   &__wrap {
     display: block;
-    padding: 16px;
+    padding: 20px;
     text-decoration: none;
     background: rgba(var(--color-fill) / 5%);
     border-radius: 2px;
     transition: box-shadow 120ms ease-out;
-    @include mixins.button-touch-options(true);
+    @include mixins.button-touch-options(false);
     user-select: auto;
     background: linear-gradient(165deg, rgb(99 70 206 / 20%) 0%, rgb(56 193 159 / 20%) 100%);
+    &:focus-visible {
+      box-shadow: 0 0 0 2px rgb(var(--color-sub) / 100%);
+    }
   }
   &__title {
     display: block;
@@ -40,7 +48,7 @@
     @include mixins.text-single-line();
   }
   &__meta {
-    margin: 4px 0 0;
+    margin: 2px 0 0;
     display: flex;
     flex-wrap: wrap;
     font-size: 10px;
@@ -66,7 +74,7 @@
     &:hover {
       .explorer-item {
         &__wrap {
-          box-shadow: 0 0 0 2px rgb(var(--color-main) / 100%);
+          box-shadow: 0 0 0 2px rgb(var(--color-sub) / 100%);
         }
       }
     }

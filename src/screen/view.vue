@@ -9,8 +9,9 @@
     </header>
     <section class="content__meta">
       <ul>
-        <li>Relative path: <strong>/src/projects/{{state.project.path}}</strong></li>
-        <li><strong><a :href="state.content.url" target="_blank">{{state.content.url}}</a></strong></li>
+        <li>Category: <strong>{{state.content.category}}</strong></li>
+        <li>Path: <strong>/src/projects/{{state.content.path}}</strong></li>
+        <li><strong><a :href="url" target="_blank">{{url}}</a></strong></li>
       </ul>
     </section>
     <nav class="content__demo-button">
@@ -24,10 +25,11 @@
 
 <script setup>
 import { reactive, computed } from 'vue';
-import { useRoute, onBeforeRouteLeave } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { marked } from 'marked';
 import tree from '../projects/tree';
 import categories from '../projects/categories';
+import * as preference from '../preference';
 
 const route = useRoute();
 const state = reactive({
@@ -41,29 +43,22 @@ const readme = computed(() => {
   if (!state.content.readme) return '';
   return marked(state.content.readme);
 });
+const url = computed(() => {
+  return `${preference.githubUrl}${state.content.path}`;
+});
 
 async function fetch()
 {
   const project = tree.get(route.params.project);
   if (!project) throw new Error('not-page');
-  let [ config, readme ] = await Promise.all([
-    import(`../projects/${project.path}/config.js`),
-    import(`../projects/${project.path}/README.md?raw`),
-  ].filter(Boolean));
-  config = config.default;
+  let readme = await import(`../projects/${project.path}/README.md?raw`);
   readme = readme.default;
-  if (!(config && readme)) throw new Error('no-config');
-  state.project = project;
-  state.content = {
-    title: config.title,
-    description: config.description,
-    category: categories.get(project.category),
-    url: config.url,
-    readme,
-  };
+  if (!readme) throw new Error('no-config');
   return {
-    project,
-    config,
+    title: project.name,
+    description: project.description,
+    category: categories.get(project.category),
+    path: project.path,
     readme,
   };
 }
@@ -95,48 +90,17 @@ function onClickDemo()
 
 // set route
 fetch()
-  .then(() => {
+  .then((res) => {
+    state.content = res;
     state.error = undefined;
     state.loading = false;
   })
   .catch(e => {
-    console.error(e);
-    state.loading = false;
     state.content = {};
+    state.loading = false;
     error(e);
   });
-
-// leave this page
-onBeforeRouteLeave((to, from) => {
-  console.log('call onBeforeRouteLeave()');
-});
 </script>
 
-<style src="./view.scss" lang="scss" scoped></style>
-<style lang="scss">
-.content {
-  &__body {
-    --size-margin-vertical: 1rem;
-    --size-text: 15px;
-    --color-text: rgb(var(--color-fill));
-    --color-text-title: rgb(var(--color-fill));
-    --color-text-key: rgb(var(--color-main));
-    --color-text-code: rgb(var(--color-main));
-    //--color-content-bg: red;
-    //--color-content-line: lime;
-    --size-text-length: 1.45;
-    pre {
-      background: linear-gradient(135deg, rgb(99 70 206 / 80%) 0%, rgb(56 193 159 / 90%) 100%);
-      border-radius: 2px;
-      color: rgb(var(--color-bg));
-      padding: 1.5rem;
-      > code {
-        color: rgb(var(--color-bg));
-        //font-weight: 700;
-        //font-family: var(--font-eng);
-        //letter-spacing: .25px;
-      }
-    }
-  }
-}
-</style>
+<style src="./view.scoped.scss" lang="scss" scoped></style>
+<style src="./view.scss" lang="scss"></style>

@@ -2,30 +2,14 @@
 <nav class="paginate">
   <div class="paginate__wrap">
     <button
-      v-if="false"
-      type="button"
-      title="to first page"
-      :disabled="props.modelValue <= 1"
-      :class="[ 'paginate-item', 'paginate-item--far' ]"
-      @click="onFirstPage">
-      first
-    </button>
-    <button
       type="button"
       :title="`to ${props.range} page prev`"
       :disabled="pageBlock <= 0"
-      :class="[ 'paginate-item', 'paginate-item--range' ]"
+      class="paginate__direction"
       @click="onPrevRange">
-      range prev
-    </button>
-    <button
-      v-if="false"
-      type="button"
-      title="to prev page"
-      :disabled="props.modelValue <= 1"
-      :class="[ 'paginate-item', 'paginate-item--near' ]"
-      @click="onPrevPage">
-      prev page
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
     </button>
     <template v-if="pages.length > 0">
       <button
@@ -33,36 +17,20 @@
         type="button"
         :disabled="item.active"
         :title="`${item.key} page`"
-        :class="[ 'paginate-item', 'paginate-item--number' ]"
+        class="paginate__number"
         @click="go(item.key)">
         {{item.key}}
       </button>
     </template>
     <button
-      v-if="false"
-      type="button"
-      title="to next page"
-      :disabled="pageCount <= modelValue"
-      :class="[ 'paginate-item', 'paginate-item--near' ]"
-      @click="onNextPage">
-      next page
-    </button>
-    <button
       type="button"
       :title="`to ${props.range} page next`"
       :disabled="pageBlock >= pageBlockTotal"
-      :class="[ 'paginate-item', 'paginate-item--range' ]"
+      class="paginate__direction"
       @click="onNextRange">
-      range next
-    </button>
-    <button
-      v-if="false"
-      type="button"
-      title="to last page"
-      :disabled="modelValue >= pageCount"
-      :class="[ 'paginate-item', 'paginate-item--far' ]"
-      @click="onLastPage">
-      last
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
     </button>
   </div>
 </nav>
@@ -99,15 +67,6 @@ const pages = computed(() => {
   return checkEmpty ? items : [];
 });
 
-function onPrevPage()
-{
-  if (props.modelValue > 1) go(props.modelValue - 1);
-}
-function onNextPage()
-{
-  if (props.modelValue < pageCount.value) go(props.modelValue + 1);
-}
-
 function onPrevRange()
 {
   if (props.modelValue > 1)
@@ -125,27 +84,10 @@ function onNextRange()
   }
 }
 
-function onFirstPage()
-{
-  if (props.modelValue > 1) go(1);
-}
-function onLastPage()
-{
-  if (props.modelValue < pageCount.value) go(pageCount.value);
-}
-
 function go(page)
 {
   if (props.modelValue !== page) emits('update:modelValue', page);
 }
 </script>
 
-<style lang="scss" scoped>
-@use '../../assets/scss/mixins';
-.paginate {
-  &__wrap {
-    display: flex;
-    justify-content: center;
-  }
-}
-</style>
+<style src="./paginate.scss" lang="scss" scoped></style>

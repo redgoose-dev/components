@@ -37,3 +37,34 @@ export function initCustomEvent()
   window.on = document.on = Element.prototype.on = events.on;
   window.off = document.off = Element.prototype.off = events.off;
 }
+
+/**
+ * convert pure object
+ * `proxy`, `observable`객체를 순수한 객체로 변환해준다.
+ *
+ * @param {Object|Array} src
+ * @return
+ */
+export function pureObject(src)
+{
+  if (!src) return null;
+  try
+  {
+    return JSON.parse(JSON.stringify(src));
+  }
+  catch(_)
+  {
+    return null;
+  }
+}
+
+/**
+ * object to query string
+ *
+ * @param {object} src
+ * @return {string}
+ */
+export function convertQueryString(src)
+{
+  return Object.keys(src).map(key => `${key}=${src[key]}`).filter(Boolean).join('&');
+}

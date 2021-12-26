@@ -1,0 +1,56 @@
+@use '../../assets/scss/mixins';
+
+.paginate {
+  --item-size: 40px;
+  &__wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
+  button {
+    display: block;
+    width: var(--item-size);
+    height: var(--item-size);
+    border: none;
+    background: none;
+    @include mixins.button-touch-options(true);
+    border-radius: 2px;
+    &:disabled {
+      cursor: default;
+    }
+    &:focus-visible {
+      box-shadow: 0 0 0 3px rgb(var(--color-sub) / 30%);
+    }
+  }
+  &__direction {
+    font-size: 0;
+    svg {
+      display: block;
+      width: 20px;
+      height: 20px;
+      margin: 0 auto;
+      stroke-width: 2.4;
+      color: rgb(var(--color-fill));
+    }
+    &:disabled {
+      svg {
+        color: rgb(var(--color-fill) / 25%);
+      }
+      &:active {
+        opacity: 1;
+      }
+    }
+  }
+  &__number {
+    display: block;
+    font-weight: 500;
+    font-family: var(--font-eng);
+    letter-spacing: -.5px;
+    font-size: 14px;
+    color: rgb(var(--color-fill));
+    &:disabled {
+      color: rgb(var(--color-main) / 100%);
+    }
+  }
+}

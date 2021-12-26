@@ -1,0 +1,97 @@
+@use '../assets/scss/mixins';
+
+.view {
+  &__error {}
+  &__loading {}
+  &__content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+.content {
+  &__header {
+    text-align: center;
+    h1 {
+      margin: 0;
+      line-height: 1.15;
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+    p {
+      --size-gap: 8px;
+      margin: 4px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--size-gap);
+      font-size: 12px;
+      line-height: 1.25;
+      color: rgb(var(--color-fill-weak));
+    }
+  }
+  &__meta {
+    margin: 40px 0 0;
+    padding: 20px 20px 20px 24px;
+    background: #fff;
+    box-shadow: 0 0 30px rgb(0 0 0 / 10%), inset 0 0 0 1px rgb(0 0 0 / 10%);
+    border-radius: 2px;
+    ul {
+      margin: 0;
+      padding: 0 0 0 20px;
+      list-style: disc;
+    }
+    li {
+      margin: 4px 0;
+      font-size: 13px;
+      line-height: 1.42;
+      color: rgb(var(--color-fill-weak));
+      strong {
+        color: rgb(var(--color-fill));
+        user-select: auto;
+      }
+      button {
+        margin: 0;
+        padding: 0;
+        @include mixins.button-touch-options(true);
+        color: rgb(var(--color-sub));
+        font-weight: 700;
+        background: none;
+        border: none;
+      }
+    }
+  }
+  &__demo-button {
+    margin: 30px 0 50px;
+    display: flex;
+    justify-content: center;
+    button {
+      display: block;
+      padding: 0 64px;
+      height: 52px;
+      background: linear-gradient(135deg, rgb(99 70 206 / 80%) 0%, rgb(56 193 159 / 90%) 100%);
+      color: #fff;
+      border: none;
+      border-radius: 26px;
+      transition: box-shadow 150ms ease-out;
+      font-weight: 600;
+      box-shadow: 0 0 0 1px rgb(255 255 255 / 100%), 0 0 15px rgb(var(--color-sub) / 40%);
+      letter-spacing: -.25px;
+      @include mixins.button-touch-options();
+      &:active {
+        box-shadow: 0 0 0 3px rgb(var(--color-main) / 100%), 0 0 20px rgb(var(--color-sub) / 50%);
+      }
+    }
+  }
+  &__line {
+    border: none;
+    border-top: 1px dashed rgb(var(--color-fill-weak) / 50%);
+    margin: 50px 0 0;
+
+  }
+  &__body {
+    margin: 50px 0 0;
+  }
+}
+

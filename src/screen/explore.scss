@@ -35,7 +35,7 @@
     list-style: none;
     display: grid;
     grid-template-columns: repeat(var(--index-column, 1), 1fr);
-    gap: 16px;
+    gap: 10px;
     li {
       min-width: 0;
     }
