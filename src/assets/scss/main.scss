@@ -12,19 +12,22 @@
   // size
   --size-text-base: 16px;
   --size-container: 1000px;
-  --size-side-padding: 50px;
+  --size-side-padding: 20px;
   // font
   --font-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   --font-code: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
   --font-eng: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   @include mixins.dark-mode(true) {}
+  @include mixins.responsive(tablet) {
+    --size-side-padding: 54px;
+  }
 }
 
 html {
   touch-action: manipulation;
 }
 body {
-  min-width: 700px;
+  min-width: 320px;
   margin: 0;
   font-size: var(--size-text-base);
   line-height: 1.6;
@@ -42,4 +45,12 @@ a {
 ::selection {
   background: rgb(var(--color-main));
   color: rgb(var(--color-bg));
+}
+
+.mode-modal {
+  overflow: hidden;
+  body {
+    position: fixed;
+    overflow: hidden;
+  }
 }

@@ -20,6 +20,9 @@
     <hr class="content__line">
     <div v-html="readme" class="content__body redgoose-body"></div>
   </div>
+  <teleport to="#modals">
+    <Demo v-if="state.openDemo"/>
+  </teleport>
 </article>
 </template>
 
@@ -30,10 +33,12 @@ import { marked } from 'marked';
 import tree from '../projects/tree';
 import categories from '../projects/categories';
 import * as preference from '../preference';
+import Demo from '../components/view/demo.vue';
 
 const route = useRoute();
 const state = reactive({
   loading: true,
+  openDemo: false,
   error: {},
   tagName: '',
   project: {},

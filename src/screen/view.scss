@@ -1,7 +1,9 @@
+@use '../assets/scss/mixins';
+
 .content {
   &__body {
     --size-margin-vertical: 1rem;
-    --size-text: 15px;
+    --size-text: 14px;
     --color-text: rgb(var(--color-fill));
     --color-text-title: rgb(var(--color-fill));
     --color-text-key: rgb(var(--color-main));
@@ -20,6 +22,11 @@
         //font-family: var(--font-eng);
         //letter-spacing: .25px;
       }
+    }
+  }
+  @include mixins.responsive(tablet) {
+    &__body {
+      --size-text: 16px;
     }
   }
 }

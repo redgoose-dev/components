@@ -49,4 +49,4 @@ customElements.define('media-source', MediaSource);
 
 - type: `string`
 
-비디오가 나오기전에 잠깐 나오는 데체 이미지
+비디오가 나오기전에 잠깐 나오는 대체 이미지

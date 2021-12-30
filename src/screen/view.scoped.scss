@@ -15,18 +15,18 @@
     h1 {
       margin: 0;
       line-height: 1.15;
-      font-size: 42px;
+      font-size: 30px;
       font-weight: 800;
       letter-spacing: -1px;
     }
     p {
       --size-gap: 8px;
-      margin: 4px 0 0;
+      margin: 2px 0 0;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: var(--size-gap);
-      font-size: 12px;
+      font-size: 11px;
       line-height: 1.25;
       color: rgb(var(--color-fill-weak));
     }
@@ -47,6 +47,7 @@
       font-size: 13px;
       line-height: 1.42;
       color: rgb(var(--color-fill-weak));
+      word-break: break-word;
       strong {
         color: rgb(var(--color-fill));
         user-select: auto;
@@ -92,6 +93,16 @@
   }
   &__body {
     margin: 50px 0 0;
+  }
+  @include mixins.responsive(tablet) {
+    &__header {
+      h1 {
+        font-size: 42px;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
   }
 }
 

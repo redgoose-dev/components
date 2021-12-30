@@ -1,4 +1,4 @@
-@import './assets/scss/mixins';
+@use './assets/scss/mixins';
 
 .layout-header {
   position: sticky;
@@ -9,7 +9,7 @@
   padding: 0 var(--size-side-padding);
   background: rgb(var(--color-main));
   background: linear-gradient(135deg, rgb(99 70 206 / 90%) 0%, rgb(56 193 159 / 90%) 100%);
-  @include background-blur(8px);
+  @include mixins.background-blur(8px);
   &__wrap {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -17,6 +17,7 @@
     max-width: var(--size-container);
     margin: 0 auto;
     height: 100%;
+    box-sizing: border-box;
   }
   &__body {
     display: flex;
@@ -28,21 +29,22 @@
     height: 100%;
     margin: 0;
     user-select: none;
+    flex: 1;
     a {
       display: flex;
       align-items: center;
       margin-left: -12px;
       padding: 0 12px;
       height: 100%;
-      font-size: 20px;
-      line-height: 1.6;
+      font-size: 16px;
+      line-height: 1;
       letter-spacing: -.5px;
       text-transform: uppercase;
       font-weight: 800;
       text-decoration: none;
       color: rgb(var(--color-bg));
       box-sizing: border-box;
-      @include button-touch-options(true);
+      @include mixins.button-touch-options(true);
       text-shadow: 0 1px 4px rgb(0 0 0 / 20%);
       &:focus-visible {
         outline: 1px dashed rgb(var(--color-sub));
@@ -67,7 +69,7 @@
       color: rgb(var(--color-bg));
       box-sizing: border-box;
       text-shadow: 0 1px 2px rgb(0 0 0 / 20%);
-      @include button-touch-options(true);
+      @include mixins.button-touch-options(true);
       &:focus-visible {
         outline: 1px dashed rgb(var(--color-sub));
         outline-offset: -2px;
@@ -81,13 +83,27 @@
       }
     }
   }
+  @include mixins.responsive(tablet) {
+    &__title {
+      flex: unset;
+      a {
+        font-size: 20px;
+      }
+    }
+  }
 }
 
 .container {
   padding: 0 var(--size-side-padding);
   &__wrap {
     max-width: var(--size-container);
-    margin: 50px auto 90px;
+    margin: 30px auto 48px;
+  }
+  @include mixins.responsive(tablet) {
+    &__wrap {
+      margin-top: 40px;
+      margin-bottom: 90px;
+    }
   }
 }
 
