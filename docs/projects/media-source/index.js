@@ -41,6 +41,8 @@ class MediaSource extends HTMLElement {
   height: var(--media-height, auto);
   max-width: var(--media-max-width, 100%);
   max-height: var(--media-max-height, unset);
+  min-width: var(--media-min-width, unset);
+  min-height: var(--media-min-height, unset);
 }
 </style>
 `.trim();
