@@ -1,7 +1,7 @@
 <template>
 <article class="view">
-  <div v-if="state.loading" class="view__loading">.loading</div>
-  <div v-else-if="state.error?.code" class="view__error">.error</div>
+  <Loading v-if="state.loading" class="view__loading"/>
+  <Error v-else-if="state.error?.code" :message="state.error.message" class="view__error"/>
   <div v-else class="content view__content">
     <header class="content__header">
       <h1>{{state.content.title}}</h1>
@@ -20,9 +20,6 @@
     <hr class="content__line">
     <div v-html="readme" class="content__body redgoose-body"></div>
   </div>
-  <teleport to="#modals">
-    <Demo v-if="state.openDemo"/>
-  </teleport>
 </article>
 </template>
 
@@ -30,18 +27,17 @@
 import { reactive, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { marked } from 'marked';
-import tree from '../projects/tree';
-import categories from '../projects/categories';
+import { index, categories } from '../libs/db';
+import { sleep } from '../libs/util';
 import * as preference from '../preference';
-import Demo from '../components/view/demo.vue';
+import Loading from '../components/view/loading.vue';
+import Error from '../components/view/error.vue';
 
 const route = useRoute();
 const state = reactive({
   loading: true,
-  openDemo: false,
   error: {},
   tagName: '',
-  project: {},
   content: {},
 });
 const readme = computed(() => {
@@ -52,12 +48,12 @@ const url = computed(() => {
   return `${preference.githubUrl}${state.content.path}`;
 });
 
-async function fetch()
+async function loadData()
 {
-  const project = tree.get(route.params.project);
+  const project = index.get(route.params.project);
   if (!project) throw new Error('not-page');
-  let readme = await import(`../projects/${project.path}/README.md?raw`);
-  readme = readme.default;
+  let readme = await fetch(`/projects/${project.path}/README.md?raw`);
+  readme = await readme.text();
   if (!readme) throw new Error('no-config');
   return {
     title: project.name,
@@ -82,20 +78,22 @@ function error(err)
     default:
       state.error = {
         code: 500,
-        message: 'Internal Server Error.',
+        message: 'Unknown error.',
       };
       break;
   }
+  console.error('ERROR:', err.message);
 }
 
 function onClickDemo()
 {
-  console.log('click demo');
+  window.open(`/projects/${state.content.path}/demo.html`);
 }
 
 // set route
-fetch()
+loadData()
   .then((res) => {
+    if (!res) throw new Error('no response');
     state.content = res;
     state.error = undefined;
     state.loading = false;

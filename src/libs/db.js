@@ -7,7 +7,8 @@ const items = [
   },
 ];
 
-export default items.reduce((map, obj) => {
+// index
+export const index = items.reduce((map, obj) => {
   map.set(obj.path, {
     category: obj.category,
     path: obj.path,
@@ -16,3 +17,9 @@ export default items.reduce((map, obj) => {
   });
   return map;
 }, new Map);
+
+// categories
+export const categories = new Map([
+  [ 'typography', 'Typography' ],
+  [ 'media', 'Media' ],
+]);

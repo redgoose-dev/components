@@ -1,0 +1,149 @@
+:root {
+  --color-bg: 250 251 252;
+  --color-fill: 17 17 17;
+  --color-main: 151 109 242;
+  --size-text-base: 16px;
+  --font-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --font-code: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  --font-eng: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+html {
+  touch-action: manipulation;
+}
+body {
+  min-width: 320px;
+  margin: 0;
+  padding: 0 20px;
+  font-family: var(--font-base);
+  font-size: var(--size-text-base);
+  line-height: 1.6;
+  background: rgb(var(--color-bg));
+}
+@media (min-width: 768px) {
+  body {
+    padding: 0 60px;
+  }
+}
+
+/* header */
+.demo-header {
+  padding: 30px 0 0;
+  text-align: center;
+}
+.demo-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+.demo-header p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  line-height: 1.15;
+  color: rgb(var(--color-fill) / 75%);
+}
+@media (min-width: 768px) {
+  .demo-header {
+    padding-top: 50px;
+  }
+  .demo-header h1 {
+    font-size: 36px;
+  }
+  .demo-header p {
+    margin-top: 4px;
+    font-size: 13px;
+  }
+}
+
+/* container */
+.container {
+  display: grid;
+  max-width: 1000px;
+  margin: 30px auto 100px;
+  gap: 50px;
+}
+@media (min-width: 768px) {
+  .container {
+    margin-top: 40px;
+  }
+}
+
+/* section */
+.section {}
+.section > header {
+  margin: 0 0 20px;
+}
+.section > header > h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.section > header > p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.25;
+  color: rgb(var(--color-fill) / 75%);
+}
+
+/* media */
+.media {
+  margin: 30px 0;
+}
+.media figcaption {
+  margin: 5px 0 0;
+  padding: 0 2px 0 0;
+  text-align: right;
+  font-size: 14px;
+  color: rgb(var(--color-fill) / 75%);
+  line-height: 1.25;
+  font-style: italic;
+}
+
+/* grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-column, 2), 1fr);
+  gap: var(--grid-gap, 16px);
+}
+.grid .media {
+  margin: 0;
+}
+
+/* controls */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.controls button {
+  display: block;
+}
+
+/* button */
+.button {
+  display: block;
+  height: 42px;
+  padding: 0 20px;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 15px;
+  font-weight: 500;
+  background: none;
+  user-select: none;
+  border: none;
+  box-sizing: border-box;
+  border-radius: 2px;
+  background: rgb(var(--color-main));
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+.button:active,
+.button:focus-visible {
+  box-shadow: 0 0 0 4px rgb(var(--color-main) / 25%);
+}
+.button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}

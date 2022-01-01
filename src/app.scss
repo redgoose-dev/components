@@ -8,7 +8,7 @@
   height: 48px;
   padding: 0 var(--size-side-padding);
   background: rgb(var(--color-main));
-  background: linear-gradient(135deg, rgb(99 70 206 / 90%) 0%, rgb(56 193 159 / 90%) 100%);
+  background: linear-gradient(135deg, rgb(99 70 206 / 75%) 0%, rgb(56 193 159 / 75%) 100%);
   @include mixins.background-blur(8px);
   &__wrap {
     display: grid;

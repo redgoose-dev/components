@@ -60,7 +60,7 @@
 <script setup>
 import { reactive, computed } from 'vue';
 import { useRoute, onBeforeRouteUpdate } from 'vue-router';
-import categories from '../../projects/categories';
+import { categories } from '../../libs/db';
 import { pureObject } from '../../libs/util';
 
 const route = useRoute();

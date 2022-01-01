@@ -48,9 +48,10 @@ a {
 }
 
 .mode-modal {
-  overflow: hidden;
-  body {
+  &, body {
     position: fixed;
     overflow: hidden;
+    width: 100vw;
+    //max-width: 100%;
   }
 }

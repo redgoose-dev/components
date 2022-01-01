@@ -73,7 +73,7 @@
   transition: box-shadow 100ms ease-out;
   box-shadow: inset 2px 2px 4px rgb(0 0 0 / 10%);
   &:focus-within {
-    box-shadow: inset 2px 2px 4px rgb(0 0 0 / 10%), 0 0 0 3px rgb(var(--color-sub) / 30%);
+    box-shadow: inset 2px 2px 4px rgb(0 0 0 / 10%), 0 0 0 2px rgb(var(--color-sub) / 100%);
   }
   input,
   select {
@@ -122,7 +122,7 @@
     background: linear-gradient(135deg, rgb(99 70 206 / 70%) 0%, rgb(56 193 159 / 80%) 100%);
     &:active,
     &:focus-visible {
-      box-shadow: 0 0 0 3px rgb(var(--color-sub) / 30%);
+      box-shadow: 0 0 0 2px rgb(var(--color-sub) / 100%);
     }
     svg {
       display: block;

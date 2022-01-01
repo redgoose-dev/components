@@ -2,7 +2,7 @@
 <article class="explorer">
   <header class="explorer__header">
     <h1>Explore</h1>
-    <p>총 <strong>{{tree.size}}</strong>개의 컴포넌트가 등록되어 있습니다.</p>
+    <p>총 <strong>{{index.size}}</strong>개의 컴포넌트가 등록되어 있습니다.</p>
   </header>
   <div class="explorer__wrap">
     <div class="explorer__body">
@@ -40,8 +40,7 @@
 <script setup>
 import { reactive, computed } from 'vue';
 import { useRouter, useRoute, onBeforeRouteUpdate } from 'vue-router';
-import tree from '../projects/tree';
-import categories from '../projects/categories';
+import { index, categories } from '../libs/db';
 import * as preference from '../preference';
 import { convertQueryString } from '../libs/util';
 import Filter from '../components/explore/filter.vue';
@@ -52,7 +51,7 @@ import Empty from '../components/explore/empty.vue';
 const router = useRouter();
 const route = useRoute();
 const state = reactive({
-  total: tree.size,
+  total: index.size,
   size: preference.explore.size,
   range: preference.explore.range,
 });
@@ -63,7 +62,7 @@ const query = reactive({
 });
 const items = computed(() => {
   let arr = [];
-  for (const value of tree.values())
+  for (const value of index.values())
   {
     let use = true;
     if (query.category && value.category !== query.category) use = false;

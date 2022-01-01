@@ -80,8 +80,9 @@
       box-shadow: 0 0 0 1px rgb(255 255 255 / 100%), 0 0 15px rgb(var(--color-sub) / 40%);
       letter-spacing: -.25px;
       @include mixins.button-touch-options();
-      &:active {
-        box-shadow: 0 0 0 3px rgb(var(--color-main) / 100%), 0 0 20px rgb(var(--color-sub) / 50%);
+      &:active,
+      &:focus-visible {
+        box-shadow: 0 0 0 3px rgb(var(--color-sub) / 100%), 0 0 20px rgb(var(--color-sub) / 50%);
       }
     }
   }

@@ -30,11 +30,15 @@ class MediaSource extends HTMLElement {
     let template = document.createElement('template');
     template.innerHTML = `
 <style>
+:host {
+  display: block;
+  font-size: 0;
+}
 .comp-media {
   display: var(--media-display, inline-block);
   object-fit: var(--media-fit, unset);
-  width: var(--media-width, unset);
-  height: var(--media-height, unset);
+  width: var(--media-width, auto);
+  height: var(--media-height, auto);
   max-width: var(--media-max-width, 100%);
   max-height: var(--media-max-height, unset);
 }
@@ -102,11 +106,18 @@ class MediaSource extends HTMLElement {
     switch(type)
     {
       case 'mp4':
+      case 'webm':
+      case 'ogv':
+      case 'm3u8':
         this.$body = document.createElement('video');
         this.$body.src = src;
         if (this.getAttribute('poster'))
         {
           this.$body.poster = this.getAttribute('poster');
+        }
+        if (this.getAttribute('type'))
+        {
+          this.$body.type = this.getAttribute('type');
         }
         this.$body.autoplay = true;
         this.$body.playsInline = true;
@@ -144,8 +155,15 @@ class MediaSource extends HTMLElement {
 
   updateSize()
   {
-    if (this.props.width) this.$body.width = this.props.width;
-    if (this.props.height) this.$body.height = this.props.height;
+    if (!this.$body) return;
+    if (this.props.width)
+    {
+      this.$body.setAttribute('width', this.props.width);
+    }
+    if (this.props.height)
+    {
+      this.$body.setAttribute('height', this.props.height);
+    }
   }
 
 }

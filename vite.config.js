@@ -15,6 +15,9 @@ export default defineConfig(({ mode }) => {
       'TITLE': JSON.stringify(env.VITE_TITLE),
       'AUTHOR': JSON.stringify(env.VITE_AUTHOR),
     },
+    build: {
+      outDir: 'docs',
+    },
     plugins: [
       vue({
         template: {

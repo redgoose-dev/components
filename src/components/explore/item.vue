@@ -31,7 +31,7 @@ const props = defineProps({
     transition: box-shadow 120ms ease-out;
     @include mixins.button-touch-options(false);
     user-select: auto;
-    background: linear-gradient(165deg, rgb(99 70 206 / 20%) 0%, rgb(56 193 159 / 20%) 100%);
+    background: linear-gradient(165deg, rgb(99 70 206 / 15%) 10%, rgb(56 193 159 / 15%) 90%);
     &:focus-visible {
       box-shadow: 0 0 0 2px rgb(var(--color-sub) / 100%);
     }
