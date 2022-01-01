@@ -94,7 +94,6 @@ body {
 .media figcaption {
   margin: 5px 0 0;
   padding: 0 2px 0 0;
-  text-align: right;
   font-size: 14px;
   color: rgb(var(--color-fill) / 75%);
   line-height: 1.25;
