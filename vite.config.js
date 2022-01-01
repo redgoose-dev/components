@@ -15,7 +15,6 @@ export default defineConfig(({ mode }) => {
     define: {
       'TITLE': JSON.stringify(env.VITE_TITLE),
       'AUTHOR': JSON.stringify(env.VITE_AUTHOR),
-      'ROOT': JSON.stringify('/components'),
     },
     build: {
       outDir: 'docs',

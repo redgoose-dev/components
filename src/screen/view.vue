@@ -51,7 +51,7 @@ async function loadData()
 {
   const project = index.get(route.params.project);
   if (!project) throw new Error('not-page');
-  let readme = await fetch(`${window.ROOT}/projects/${project.path}/README.md?raw`);
+  let readme = await fetch(`/components/projects/${project.path}/README.md?raw`);
   readme = await readme.text();
   if (!readme) throw new Error('no-config');
   return {
@@ -86,7 +86,7 @@ function error(err)
 
 function onClickDemo()
 {
-  window.open(`${window.ROOT}/projects/${state.content.path}/demo.html`);
+  window.open(`/components/projects/${state.content.path}/demo.html`);
 }
 
 // set route
