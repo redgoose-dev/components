@@ -22,8 +22,8 @@ customElements.define('media-source', MediaSource);
 
 #### src
 
-- value: `jpg|png|gif|svg|mp4`
 - type: `string`
+- value: `*.jpg|*.png|*.gif|*.svg|*.mp4`
 
 이미지나 비디오 주소
 
@@ -35,13 +35,13 @@ customElements.define('media-source', MediaSource);
 
 #### width
 
-- type: `string|number`
+- type: `string`
 
 컴포넌트의 가로 사이즈
 
 #### height
 
-- type: `string|number`
+- type: `string`
 
 컴포넌트의 높이 사이즈
 
@@ -50,3 +50,10 @@ customElements.define('media-source', MediaSource);
 - type: `string`
 
 비디오가 나오기전에 잠깐 나오는 대체 이미지
+
+#### type
+
+- type: `string`
+- value: `video/mp4,video/webm`
+
+비디오 타입

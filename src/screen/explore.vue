@@ -88,7 +88,7 @@ function redirect(src)
   if (!params.category) delete params.category;
   if (!params.keyword) delete params.keyword;
   if (!(params.page > 1)) delete params.page;
-  router.push(`/?${convertQueryString(params)}`);
+  router.push(`${window.ROOT}/?${convertQueryString(params)}`);
 }
 
 function onResetFilter()

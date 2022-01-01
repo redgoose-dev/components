@@ -2,18 +2,19 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
   {
-    path: '/',
+    path: `${window.ROOT}/`,
     name: 'Explore',
     component: () => import('./screen/explore.vue'),
   },
   {
-    path: '/view/:project',
+    path: `${window.ROOT}/view/:project`,
     name: 'View',
     component: () => import('./screen/view.vue'),
   },
 ];
 
 const router = createRouter({
+  base: '/',
   history: createWebHistory(),
   routes,
 });

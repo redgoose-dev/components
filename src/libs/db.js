@@ -20,6 +20,5 @@ export const index = items.reduce((map, obj) => {
 
 // categories
 export const categories = new Map([
-  [ 'typography', 'Typography' ],
   [ 'media', 'Media' ],
 ]);

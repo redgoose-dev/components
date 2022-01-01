@@ -6,7 +6,7 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
   return {
-    base: './',
+    base: '/components/',
     server: {
       host: env.VITE_HOST,
       port: env.VITE_PORT,
@@ -15,6 +15,7 @@ export default defineConfig(({ mode }) => {
     define: {
       'TITLE': JSON.stringify(env.VITE_TITLE),
       'AUTHOR': JSON.stringify(env.VITE_AUTHOR),
+      'ROOT': JSON.stringify('/components'),
     },
     build: {
       outDir: 'docs',

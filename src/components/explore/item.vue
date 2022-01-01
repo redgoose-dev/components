@@ -1,6 +1,6 @@
 <template>
 <div class="explorer-item">
-  <router-link :to="`/view/${props.path}`" class="explorer-item__wrap">
+  <router-link :to="`${rootUrl}/view/${props.path}`" class="explorer-item__wrap">
     <h3 class="explorer-item__title">{{props.name}}</h3>
     <p class="explorer-item__meta">
       <span>Category: {{props.category}}</span>
@@ -11,6 +11,7 @@
 </template>
 
 <script setup>
+const rootUrl = window.ROOT;
 const props = defineProps({
   name: String,
   path: String,

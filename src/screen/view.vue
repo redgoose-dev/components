@@ -10,7 +10,7 @@
     <section class="content__meta">
       <ul>
         <li>Category: <strong>{{state.content.category}}</strong></li>
-        <li>Path: <strong>/src/projects/{{state.content.path}}</strong></li>
+        <li>Path: <strong>/public/projects/{{state.content.path}}/</strong></li>
         <li><strong><a :href="url" target="_blank">{{url}}</a></strong></li>
       </ul>
     </section>
@@ -28,7 +28,6 @@ import { reactive, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { marked } from 'marked';
 import { index, categories } from '../libs/db';
-import { sleep } from '../libs/util';
 import * as preference from '../preference';
 import Loading from '../components/view/loading.vue';
 import Error from '../components/view/error.vue';
@@ -52,7 +51,7 @@ async function loadData()
 {
   const project = index.get(route.params.project);
   if (!project) throw new Error('not-page');
-  let readme = await fetch(`/projects/${project.path}/README.md?raw`);
+  let readme = await fetch(`${window.ROOT}/projects/${project.path}/README.md?raw`);
   readme = await readme.text();
   if (!readme) throw new Error('no-config');
   return {
@@ -87,7 +86,7 @@ function error(err)
 
 function onClickDemo()
 {
-  window.open(`/projects/${state.content.path}/demo.html`);
+  window.open(`${window.ROOT}/projects/${state.content.path}/demo.html`);
 }
 
 // set route
