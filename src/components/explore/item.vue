@@ -1,6 +1,6 @@
 <template>
 <div class="explorer-item">
-  <router-link :to="`/components/view/${props.path}`" class="explorer-item__wrap">
+  <router-link :to="`/view/${props.path}`" class="explorer-item__wrap">
     <h3 class="explorer-item__title">{{props.name}}</h3>
     <p class="explorer-item__meta">
       <span>Category: {{props.category}}</span>

@@ -3,10 +3,10 @@
   <div class="layout-header__wrap">
     <div class="layout-header__body">
       <h1 class="layout-header__title">
-        <router-link :to="`/components/`">Components</router-link>
+        <router-link :to="`/`">Components</router-link>
       </h1>
       <nav class="layout-header__navigation">
-        <router-link :to="`/components/`">Explore</router-link>
+        <router-link :to="`/`">Explore</router-link>
         <a href="https://github.com/redgoose-dev/components" target="_blank">GitHub</a>
       </nav>
     </div>

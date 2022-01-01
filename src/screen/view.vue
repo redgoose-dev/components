@@ -51,7 +51,7 @@ async function loadData()
 {
   const project = index.get(route.params.project);
   if (!project) throw new Error('not-page');
-  let readme = await fetch(`/components/projects/${project.path}/README.md?raw`);
+  let readme = await fetch(`./projects/${project.path}/README.md?raw`);
   readme = await readme.text();
   if (!readme) throw new Error('no-config');
   return {
