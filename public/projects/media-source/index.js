@@ -130,6 +130,7 @@ class MediaSource extends HTMLElement {
       case 'png':
       case 'gif':
       case 'svg':
+      case 'webp':
         this.$body = document.createElement('img');
         this.$body.src = src;
         break;
